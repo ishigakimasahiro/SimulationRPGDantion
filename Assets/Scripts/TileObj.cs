@@ -1,0 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+// ”Ô†‚ğ‚Â‚¯‚é
+public class TileObj : MonoBehaviour
+{
+    public int number;
+}
