@@ -5,5 +5,5 @@ using UnityEngine;
 // ”Ô†‚ğ‚Â‚¯‚é
 public class TileObj : MonoBehaviour
 {
-    public int number;
+    public Vector2Int positionInt;
 }

@@ -28,18 +28,20 @@ public class MapGenerator : MonoBehaviour
             {
                 Vector2 pos = new Vector2(x, y)+offset;
                 int rate = Random.Range(0, 100);
+                TileObj tileObj = null;
                 if (rate < GREEN2_RATE)
                 {
-                    Instantiate(GreenObjPrefab, pos, Quaternion.identity, tileParent);
+                    tileObj=Instantiate(GreenObjPrefab, pos, Quaternion.identity, tileParent);
                 }
                 else if (rate < WATER_RATE)
                 {
-                    Instantiate(Green2ObjPrefab, pos, Quaternion.identity, tileParent);
+                    tileObj=Instantiate(Green2ObjPrefab, pos, Quaternion.identity, tileParent);
                 }
                 else
                 {
-                    Instantiate(WaterObjPrefab, pos, Quaternion.identity, tileParent);
+                    tileObj=Instantiate(WaterObjPrefab, pos, Quaternion.identity, tileParent);
                 }
+                tileObj.positionInt = new Vector2Int((int)pos.x,(int)pos.y);
             }
         }
     }
