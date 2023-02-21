@@ -5,6 +5,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     [SerializeField] Cursor cursor;
+    [SerializeField] CharactersManager charactersManager;
 
     private void Update()
     {
@@ -17,7 +18,18 @@ public class MapManager : MonoBehaviour
             {
                 cursor.SetPosition(hit2D.transform);
                 TileObj tileObj = hit2D.collider.GetComponent<TileObj>();
-                Debug.Log(tileObj.positionInt);
+                // 選択タイルの座標
+                //Debug.Log(tileObj.positionInt);
+                // キャラの座標
+                Character character = charactersManager.GetCharacter(tileObj.positionInt);
+                if(character)
+                {
+                    Debug.Log("いる");
+                }
+                else
+                {
+                    Debug.Log("いない");
+                }
             }
         }
     }
