@@ -14,11 +14,6 @@ public class MapGenerator : MonoBehaviour
     int GREEN2_RATE = 10;
     int WATER_RATE = 33;
 
-    void Start()
-    {
-        Generator();
-    }
-
     public void Generator()
     {
         Vector2 offset = new Vector2(-WIDTH / 2, -HEIGHT / 2);

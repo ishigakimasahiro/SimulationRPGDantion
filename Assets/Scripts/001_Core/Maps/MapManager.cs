@@ -6,6 +6,12 @@ public class MapManager : MonoBehaviour
 {
     [SerializeField] Cursor cursor;
     [SerializeField] CharactersManager charactersManager;
+    [SerializeField] MapGenerator mapGenerator;
+
+    private void Start()
+    {
+        mapGenerator.Generator();
+    }
 
     private void Update()
     {

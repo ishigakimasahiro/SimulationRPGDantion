@@ -1109,6 +1109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 1890138559}
   charactersManager: {fileID: 706658595}
+  mapGenerator: {fileID: 5227722}
 --- !u!4 &1933422419
 Transform:
   m_ObjectHideFlags: 0
