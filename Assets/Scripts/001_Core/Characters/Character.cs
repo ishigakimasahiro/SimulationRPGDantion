@@ -13,4 +13,11 @@ public class Character : MonoBehaviour
     {
         transform.position = (Vector2)positionInt;
     }
+
+    // ƒLƒƒƒ‰‚ðˆÚ“®
+    public void Move(Vector2Int pos)
+    {
+        positionInt = pos;
+        transform.position = (Vector2)positionInt;
+    }
 }
