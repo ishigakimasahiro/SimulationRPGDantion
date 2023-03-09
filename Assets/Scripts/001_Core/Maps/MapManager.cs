@@ -9,10 +9,12 @@ public class MapManager : MonoBehaviour
     [SerializeField] MapGenerator mapGenerator;
 
     Character selectedCharacter;
+    List<TileObj> tileObjs = new List<TileObj>();
+    List<TileObj> movableTiles = new List<TileObj>();
 
     private void Start()
     {
-        mapGenerator.Generator();
+        tileObjs = mapGenerator.Generator();
     }
 
     private void Update()
@@ -37,6 +39,9 @@ public class MapManager : MonoBehaviour
                     Debug.Log("いる");
                     // 選択キャラの保持
                     selectedCharacter = character;
+                    ResetMovablePanels();  // false
+                    // 移動範囲表示
+                    ShowMovablePanels(selectedCharacter);
                 }
                 else
                 {
@@ -46,10 +51,37 @@ public class MapManager : MonoBehaviour
                     {
                         // selectedCharacterをtileObjまで移動
                         selectedCharacter.Move(tileObj.positionInt);
+                        ResetMovablePanels();  // false
                         selectedCharacter = null;
                     }
                 }
             }
         }
+    }
+
+    void ShowMovablePanels(Character character)
+    {
+        // centerPosから上下左右
+        {
+            movableTiles.Add(tileObjs.Find(tile => tile.positionInt == character.Position));
+            movableTiles.Add(tileObjs.Find(tile => tile.positionInt == character.Position+Vector2Int.up));
+            movableTiles.Add(tileObjs.Find(tile => tile.positionInt == character.Position+Vector2Int.down));
+            movableTiles.Add(tileObjs.Find(tile => tile.positionInt == character.Position+Vector2Int.left));
+            movableTiles.Add(tileObjs.Find(tile => tile.positionInt == character.Position+Vector2Int.right));
+        };
+
+        foreach (var tile in movableTiles)
+        {
+            tile.ShowMovablePanel(true);
+        }
+    }
+
+    void ResetMovablePanels()
+    {
+        foreach (var tile in movableTiles)
+        {
+            tile.ShowMovablePanel(false);
+        }
+        movableTiles.Clear();
     }
 }

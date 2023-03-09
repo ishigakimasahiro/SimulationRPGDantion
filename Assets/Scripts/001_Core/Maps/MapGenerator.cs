@@ -14,8 +14,10 @@ public class MapGenerator : MonoBehaviour
     int GREEN2_RATE = 10;
     int WATER_RATE = 33;
 
-    public void Generator()
+    public List<TileObj> Generator()
     {
+        List<TileObj> tileObjs = new List<TileObj>();
+
         Vector2 offset = new Vector2(-WIDTH / 2, -HEIGHT / 2);
         for (int x = 0; x < WIDTH; x++)
         {
@@ -37,8 +39,10 @@ public class MapGenerator : MonoBehaviour
                     tileObj=Instantiate(WaterObjPrefab, pos, Quaternion.identity, tileParent);
                 }
                 tileObj.positionInt = new Vector2Int((int)pos.x,(int)pos.y);
+                tileObjs.Add(tileObj);
             }
         }
+        return tileObjs;
     }
 
 }
